@@ -1,0 +1,23 @@
+var START_RADIUS = 1;
+var INCREMENT = 1;
+var CHANGE_COLORS_AT = 10;
+
+var circle = new Circle(START_RADIUS);
+circle.setPosition(getWidth()/2, getHeight()/2);
+add(circle);
+
+function start(){
+    setTimer(drawCircle, 50);
+}
+    
+function drawCircle(){
+    var radius = circle.getRadius();
+    circle.setRadius(INCREMENT + radius);
+    if(radius % CHANGE_COLORS_AT == 1){
+        circle.setColor(Randomizer.nextColor());
+    }
+    if(radius >= getHeight()/2){
+        stopTimer(drawCircle);
+    }
+}
+
